@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User tweets
+{% endblock %}
+
+{% block content %}
+<strong>{{ user.username }} tweets:</strong><br><br>
+    <table>
+        {% for tweet in tweets %}
+            <td>
+                <tr>
+                    {{ tweet.content }} - <a href="{% url 'tweet-details' tweet.id %}">Details</a><br>
+                </tr>
+            </td>
+        {% endfor %}
+        {% if request.user != user %}
+            <td>
+                <tr><hr></tr>
+                <tr>
+                    <a href="{% url 'send-message' user.id %}">Send message</a>
+                </tr>
+            </td>
+        {% endif %}
+    </table>
+{% endblock %}

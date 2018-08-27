@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>Twitterino</title>
+    {% endblock %}
+</head>
+<body>
+    <br>
+    {% block login %}
+        {% if user.is_authenticated %}
+            <p>Witaj {{ request.user }}</p>
+            <p>
+                <a href="{% url 'logout' %}">Log out</a>
+            </p>
+        {% else %}
+            <p>
+                <a href="{% url 'login' %}">Log in</a>
+            </p>
+        {% endif %}
+    {% endblock %}
+    <br>
+    <div>
+        {% block content %}
+            Twitterino
+        {% endblock %}
+    </div>
+</body>
+</html>

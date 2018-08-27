@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Tweet Details<br>
+    Message: {{ message.content }}<br>
+    Creation date: {{ message.creation_date }}<br>
+    Sender: {{ message.sender }}<br>
+    Recipient: {{ message.recipient }}<br>
+{% endblock %}

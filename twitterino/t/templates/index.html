@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Twitterino Main Page
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'add-tweet' %}">Add tweet</a><br><br>
+    <table>
+        <td><tr><strong>Tweets:</strong></tr></td>
+        {% for tweet in tweets %}
+            <td>
+                <tr><h5><strong>{{ tweet.user }}</strong></h5></tr>
+                <tr><h3>{{ tweet.content }}</h3></tr>
+                <tr><em>{{ tweet.creation_date }}</em><br></tr><hr>
+            </td>
+        {% endfor %}
+    </table>
+{% endblock %}

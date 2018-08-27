@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Messages
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tbody>
+            <tr>
+                <td valign="top">
+                    <table>
+                        <tr><th><strong>Sent messages:</strong></th><tr>
+                            {% for message in sent %}
+                                <tr><td>Data: {{ message.creation_date }}</td></tr>
+                                <tr><td>Sender: {{ message.sender }}</td></tr>
+                                <tr><td>Was read: {{ message.was_read }}</td></tr>
+                                <tr><td><a href="{% url 'message-details' message.id %}">Details</a></td></tr>
+                                <tr><td><hr></td></tr>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </td>
+                <td valign="top">
+                    <table>
+                        <tr>
+                            <th><strong>Recieved messages:</strong></th>
+                            {% for message in recieved %}
+                                <tr><td>Data: {{ message.creation_date }}</td></tr>
+                                <tr><td>Sender: {{ message.sender }}</td></tr>
+                                <tr><td>Was read: {{ message.was_read }}</td></tr>
+                                <tr><td><a href="{% url 'message-details' message.id %}">Details</a></td></tr>
+                                <tr><td><hr></td></tr>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

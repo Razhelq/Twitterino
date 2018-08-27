@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Tweet Details<br>
+    {{ tweet.content }}<br>
+    {{ tweet.creation_date }}<br>
+    {{ tweet.user }}<br><br>
+    Comments:<br>
+    {% for comment in comments %}
+        {{ comment.content }}<br>
+        {{ comment.sender }}
+        {{ comment.recipient }}<br>
+        {{ comment.creation_date }}<br><hr>
+    {% endfor %}
+    <a href="{% url 'add-comment' tweet.id %}">Add comment</a>
+{% endblock %}
